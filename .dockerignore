@@ -1,0 +1,15 @@
+node_modules
+.git
+.gitignore
+.DS_Store
+*.log
+.htaccess.backup
+test.php
+check.php
+debug.php
+AIRCRAFT-API
+README.md
+API_INTEGRATION_GUIDE.md
+frontend_integration_example.js
+database_schema.sql
+add_ratings.sql
