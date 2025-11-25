@@ -1,20 +1,7 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json");
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
-
-include_once '../config/database.php';
+require("../../config/database.php");
 
 try {
-    $database = new Database();
-    $db = $database->getConnection();
-    
     $cinema_id = isset($_GET['cinema_id']) ? $_GET['cinema_id'] : null;
     
     if (!$cinema_id) {
@@ -26,7 +13,7 @@ try {
               WHERE cinema_id = :cinema_id 
               ORDER BY sort_order ASC";
     
-    $stmt = $db->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->bindParam(':cinema_id', $cinema_id);
     $stmt->execute();
     
